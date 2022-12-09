@@ -16,8 +16,6 @@ module.exports = {
     newPost(title, description) {
         this.posts.push({id: generateId(), title, description})
     },
-
-
 }
 
 //Gera um id aleatório

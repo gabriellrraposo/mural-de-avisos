@@ -5,7 +5,7 @@ const posts = require('../model/posts')
 
 
 router.get('/all', (req, res) => {
-    res.json(JSON.stringify(posts.getAll))
+    res.json(JSON.stringify(posts.getAll()))
 })
 router.post('/new', bp.json(), (req, res) => {
     let title = req.body.title
@@ -16,4 +16,4 @@ router.post('/new', bp.json(), (req, res) => {
     res.send("Post added")
 })
 
-module.exports(router)
+module.exports = router

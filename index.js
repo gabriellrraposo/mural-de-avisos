@@ -1,10 +1,12 @@
 //Importando módulos
 const express = require('express')
 const path = require('path')
+const apiRoute = require('./routes/api')
 
 const app = express()
 
-app.use(express.static(path.join(__dirname, "public")))
+app.use("/api", apiRoute)
+app.use("/", express.static(path.join(__dirname, "public")))
 
 //Escutando a porta 3000 para iniciar o servidor
 const PORT = 3000
