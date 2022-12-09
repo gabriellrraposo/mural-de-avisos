@@ -1,6 +1,7 @@
 //Importando módulos
 const express = require('express')
 const bp = require('body-parser')
+const posts = require('./model/posts')
 
 const app = express()
 
@@ -9,19 +10,17 @@ let posts = [
         id: 0,
         title: "teste",
         description: "descrição teste"
-    }
-    
+    } 
 ]
 
 app.get('/all', (req, res) => {
-    res.json(JSON.stringify(posts))
+    res.json(JSON.stringify(posts.getAll))
 })
 app.post('/new', bp.json(), (req, res) => {
-    let id = generateId()
     let title = req.body.title
     let description = req.body.description
 
-    posts.push({id, title, description})
+    posts.newPost(title, description)
 
     res.send("Post added")
 })
@@ -33,7 +32,3 @@ app.listen(PORT, err => {
 
     console.log(`Server is running on Port:${PORT}!`)
 })
-
-let generateId = () => {
-    return Math.random().toString(36).substring(2,)
-}

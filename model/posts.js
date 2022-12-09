@@ -1,0 +1,23 @@
+module.exports = {
+    posts: [
+        {
+            id: 0,
+            title: "teste",
+            description: "descrição teste"
+        } 
+    ],
+
+    getAll() {
+        return this.posts
+    },
+
+    newPost(title, description) {
+        this.posts.push({id: generateId(), title, description})
+    },
+
+    
+}
+
+let generateId = () => {
+    return Math.random().toString(36).substring(2,)
+}
