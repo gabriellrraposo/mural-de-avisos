@@ -2,8 +2,11 @@
 const express = require('express')
 const bp = require('body-parser')
 const posts = require('./model/posts')
+const path = require('path')
 
 const app = express()
+
+app.use(express.static(path.join(__dirname, "public")))
 
 app.get('/all', (req, res) => {
     res.json(JSON.stringify(posts.getAll))
@@ -16,6 +19,8 @@ app.post('/new', bp.json(), (req, res) => {
 
     res.send("Post added")
 })
+
+
 
 //Escutando a porta 3000 para iniciar o servidor
 const PORT = 3000
