@@ -5,14 +5,6 @@ const posts = require('./model/posts')
 
 const app = express()
 
-let posts = [
-    {
-        id: 0,
-        title: "teste",
-        description: "descrição teste"
-    } 
-]
-
 app.get('/all', (req, res) => {
     res.json(JSON.stringify(posts.getAll))
 })
